@@ -10,6 +10,11 @@ public class Tile : MonoBehaviour {
     public bool buildable;
 
     public Sprite empty;
+    public Sprite sand;
+    public Sprite water;
+    public Sprite grass;
+    public Sprite dirt;
+    public Sprite mountain;
     public Sprite floor;
     public Sprite wall;
 
@@ -29,6 +34,21 @@ public class Tile : MonoBehaviour {
         {
             case TileType.Empty:
                 sprRenderer.sprite = empty;
+                break;
+            case TileType.Sand:
+                sprRenderer.sprite = sand;
+                break;
+            case TileType.Water:
+                sprRenderer.sprite = water;
+                break;
+            case TileType.Grass:
+                sprRenderer.sprite = grass;
+                break;
+            case TileType.Dirt:
+                sprRenderer.sprite = dirt;
+                break;
+            case TileType.Mountain:
+                sprRenderer.sprite = mountain;
                 break;
             case TileType.Floor:
                 sprRenderer.sprite = floor;

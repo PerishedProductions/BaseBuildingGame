@@ -61,8 +61,8 @@ public class World : MonoBehaviour {
 
                 if (noise >= 0.5 && 0.7 > noise)
                 {
-                    tile.GetComponent<Tile>().type = Tile.TileType.Dirt;
                     tile.GetComponent<Tile>().type = Tile.TileType.Wall;
+                    tile.GetComponent<Tile>().type = Tile.TileType.Dirt;
                     tile.GetComponent<Tile>().buildable = true;
                 }
 
