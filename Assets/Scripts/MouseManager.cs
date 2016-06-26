@@ -23,6 +23,9 @@ public class MouseManager : MonoBehaviour {
     {
         DisplayInfo();
 
+        currFramePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        currFramePosition.z = 0;
+
         if (isBuilding)
         {
             currFramePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
