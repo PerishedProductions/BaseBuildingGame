@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour {
     private float deltaTime = 0;
 
     public Text fpsCounter;
+    public Text time;
     public MouseManager mouseManager;
 
     public GameObject buildTools;
