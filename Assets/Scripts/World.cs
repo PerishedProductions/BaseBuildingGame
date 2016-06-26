@@ -63,7 +63,6 @@ public class World : MonoBehaviour {
                 if (noise >= 0.7)
                 {
                     tile.GetComponent<Tile>().type = Tile.TileType.Mountain;
-                    tile.GetComponent<Tile>().type = Tile.TileType.Floor;
                     tile.GetComponent<Tile>().buildable = false;
                 }
                 GenerateFeatures(tile, x, y);
