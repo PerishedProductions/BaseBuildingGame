@@ -40,28 +40,22 @@ public class World : MonoBehaviour {
                 if (0.2 > noise)
                 {
                     tile.GetComponent<Tile>().type = Tile.TileType.Water;
-                    tile.GetComponent<Tile>().type = Tile.TileType.Empty;
                 }
 
                 if (noise >= 0.2 && 0.3 > noise)
                 {
-                    tile.GetComponent<Tile>().type = Tile.TileType.Sand;
-                    tile.GetComponent<Tile>().type = Tile.TileType.Floor;
-                    tile.GetComponent<Tile>().type = Tile.TileType.Sand;                    
+                    tile.GetComponent<Tile>().type = Tile.TileType.Sand;                 
                     tile.GetComponent<Tile>().buildable = true;
                 }
 
                 if (noise >= 0.3 && 0.5 > noise)
                 {
                     tile.GetComponent<Tile>().type = Tile.TileType.Grass;
-                    tile.GetComponent<Tile>().type = Tile.TileType.Empty;
-                    tile.GetComponent<Tile>().type = Tile.TileType.Wall;
                     tile.GetComponent<Tile>().buildable = false;
                 }
 
                 if (noise >= 0.5 && 0.7 > noise)
                 {
-                    tile.GetComponent<Tile>().type = Tile.TileType.Wall;
                     tile.GetComponent<Tile>().type = Tile.TileType.Dirt;
                     tile.GetComponent<Tile>().buildable = true;
                 }
@@ -69,7 +63,6 @@ public class World : MonoBehaviour {
                 if (noise >= 0.7)
                 {
                     tile.GetComponent<Tile>().type = Tile.TileType.Mountain;
-                    tile.GetComponent<Tile>().type = Tile.TileType.Floor;
                     tile.GetComponent<Tile>().buildable = false;
                 }
                 GenerateFeatures(tile, x, y);
