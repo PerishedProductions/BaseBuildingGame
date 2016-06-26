@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: eb80224f09b6ed5449c0b6759990a0f9
+guid: 8b6fd8e44cb253e4f86e2b217b3eead7
 timeCreated: 1466970460
 licenseType: Free
 TextureImporter:
@@ -1006,6 +1006,7 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 256
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
@@ -1025,6 +1026,7 @@ TextureImporter:
         - {x: 0, y: 0}
         - {x: 256, y: 0}
         - {x: 256, y: 256}
+      tessellationDetail: -1
     - name: WallSprites_1
       rect:
         serializedVersion: 2
@@ -1040,6 +1042,7 @@ TextureImporter:
         - {x: 0, y: 0}
         - {x: 256, y: 0}
         - {x: 256, y: 256}
+      tessellationDetail: -1
     - name: WallSprites_2
       rect:
         serializedVersion: 2
@@ -1055,6 +1058,7 @@ TextureImporter:
         - {x: 0, y: 0}
         - {x: 256, y: 0}
         - {x: 256, y: 256}
+      tessellationDetail: -1
     - name: WallSprites_3
       rect:
         serializedVersion: 2
@@ -1070,6 +1074,7 @@ TextureImporter:
         - {x: 0, y: 0}
         - {x: 256, y: 0}
         - {x: 256, y: 256}
+      tessellationDetail: -1
     - name: WallSprites_4
       rect:
         serializedVersion: 2
@@ -1085,6 +1090,7 @@ TextureImporter:
         - {x: 0, y: 0}
         - {x: 256, y: 0}
         - {x: 256, y: 256}
+      tessellationDetail: -1
     - name: WallSprites_5
       rect:
         serializedVersion: 2
@@ -1100,6 +1106,7 @@ TextureImporter:
         - {x: 0, y: 0}
         - {x: 256, y: 0}
         - {x: 256, y: 256}
+      tessellationDetail: -1
     - name: WallSprites_6
       rect:
         serializedVersion: 2
@@ -1115,6 +1122,7 @@ TextureImporter:
         - {x: 0, y: 0}
         - {x: 256, y: 0}
         - {x: 256, y: 256}
+      tessellationDetail: -1
     - name: WallSprites_7
       rect:
         serializedVersion: 2
@@ -1130,6 +1138,7 @@ TextureImporter:
         - {x: 0, y: 0}
         - {x: 256, y: 0}
         - {x: 256, y: 256}
+      tessellationDetail: -1
     - name: WallSprites_8
       rect:
         serializedVersion: 2
@@ -1145,6 +1154,7 @@ TextureImporter:
         - {x: 0, y: 0}
         - {x: 256, y: 0}
         - {x: 256, y: 256}
+      tessellationDetail: -1
     - name: WallSprites_9
       rect:
         serializedVersion: 2
@@ -1160,6 +1170,7 @@ TextureImporter:
         - {x: 0, y: 0}
         - {x: 256, y: 0}
         - {x: 256, y: 256}
+      tessellationDetail: -1
     - name: WallSprites_10
       rect:
         serializedVersion: 2
@@ -1175,6 +1186,7 @@ TextureImporter:
         - {x: 0, y: 0}
         - {x: 256, y: 0}
         - {x: 256, y: 256}
+      tessellationDetail: -1
     - name: WallSprites_11
       rect:
         serializedVersion: 2
@@ -1190,6 +1202,7 @@ TextureImporter:
         - {x: 0, y: 0}
         - {x: 256, y: 0}
         - {x: 256, y: 256}
+      tessellationDetail: -1
     - name: WallSprites_12
       rect:
         serializedVersion: 2
@@ -1205,6 +1218,7 @@ TextureImporter:
         - {x: 0, y: 0}
         - {x: 256, y: 0}
         - {x: 256, y: 256}
+      tessellationDetail: -1
     - name: WallSprites_13
       rect:
         serializedVersion: 2
@@ -1220,6 +1234,7 @@ TextureImporter:
         - {x: 0, y: 0}
         - {x: 256, y: 0}
         - {x: 256, y: 256}
+      tessellationDetail: -1
     - name: WallSprites_14
       rect:
         serializedVersion: 2
@@ -1235,6 +1250,7 @@ TextureImporter:
         - {x: 0, y: 0}
         - {x: 256, y: 0}
         - {x: 256, y: 256}
+      tessellationDetail: -1
     outline: []
   spritePackingTag: 
   userData: 
