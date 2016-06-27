@@ -8,27 +8,27 @@ public class Weather : MonoBehaviour {
     private int dayLength;
     private int dayStart;
     private int nightStart;
+    public int hours;
+    public int minutes;
+
     public float currentTime;
     private float cycleSpeed;
-    private bool isDay;
+    public bool isDay;
     public Light sun;
     public GameObject earth;
 
-
     // Use this for initialization
     void Start () {
-        dayLength = 2400;
-        dayStart = 0;
-        nightStart = 1200;
-        currentTime = 0;
-        //StartCoroutine(TimeOfDay());
-        earth = gameObject.transform.parent.gameObject;
+        dayLength = 1440;
+        dayStart = 360;
+        nightStart = 540;
+        currentTime = 360;
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentTime += 0.1f * Time.deltaTime * 100;
+        currentTime += 0.1f * Time.deltaTime * 5;
         //starts the day
         if (currentTime >= dayStart && currentTime < nightStart)
         {
@@ -56,18 +56,8 @@ public class Weather : MonoBehaviour {
         {
             sun.intensity = 1;
         }
+
+        hours = Mathf.FloorToInt(currentTime / 60);
+        minutes = (int)currentTime % 60;
     }
-/*
-  private IEnumerator TimeOfDay()
-    {
-        while (true)
-        {
-            currentTime += 1;
-            int hours = Mathf.RoundToInt(currentTime / 60);
-            int minutes = (int)currentTime % 60;
-            Debug.Log(hours + ":" + minutes);
-            yield return new WaitForSeconds(1F / cycleSpeed);
-        }
-    }
-    */
 }

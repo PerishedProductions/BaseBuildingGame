@@ -7,7 +7,8 @@ public class UIManager : MonoBehaviour {
     private float deltaTime = 0;
 
     public Text fpsCounter;
-    public Text time;
+    public Text clock;
+
     public MouseManager mouseManager;
 
     public GameObject buildTools;
@@ -15,6 +16,8 @@ public class UIManager : MonoBehaviour {
 
     public GameObject pauseMenu;
     public bool gameIsPaused = false;
+
+    public Weather weather;
 
     public void Booldoze()
     {
@@ -49,5 +52,14 @@ public class UIManager : MonoBehaviour {
         float msec = deltaTime * 1000.0f;
         float fps = 1.0f / deltaTime;
         fpsCounter.text = string.Format("{1:0.} FPS", msec, fps);
+
+        if (weather.currentTime >= 0 && weather.currentTime < 1200)
+        {
+            clock.text = string.Format("{0}:{1}", weather.hours, weather.minutes + " AM");
+        }
+        else
+        {
+            clock.text = string.Format("{0}:{1}", weather.hours, weather.minutes + " PM");
+        }
     }
 }
