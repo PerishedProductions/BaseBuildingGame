@@ -55,11 +55,11 @@ public class UIManager : MonoBehaviour {
 
         if (weather.currentTime >= 0 && weather.currentTime < 1200)
         {
-            clock.text = string.Format("{0}:{1}", weather.hours, weather.minutes + " AM");
+			clock.text = "Day: " + weather.day + ", " + string.Format("{0}:{1}", weather.hours, weather.minutes + " AM");
         }
         else
         {
-            clock.text = string.Format("{0}:{1}", weather.hours, weather.minutes + " PM");
+			clock.text = "Day: " + weather.day + ", " + string.Format("{0}:{1}", weather.hours, weather.minutes + " PM");
         }
     }
 }

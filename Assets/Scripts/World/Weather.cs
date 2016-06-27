@@ -5,9 +5,11 @@ using System;
 
 public class Weather : MonoBehaviour {
 
+	//All of them variables
     private int dayLength;
     private int dayStart;
     private int nightStart;
+	public int day = 1;
     public int hours;
     public int minutes;
 
@@ -57,6 +59,12 @@ public class Weather : MonoBehaviour {
             sun.intensity = 1;
         }
 
+		//Add one day whenever the time is at 0
+		if (currentTime == 0) {
+			day++;
+		}
+
+		//Converts the time into hours and minutes
         hours = Mathf.FloorToInt(currentTime / 60);
         minutes = (int)currentTime % 60;
     }
