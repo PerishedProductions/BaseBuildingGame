@@ -6,7 +6,9 @@ using System;
 public class Weather : MonoBehaviour {
 
 	//All of them variables
-    private int dayLength;
+	public WeatherPreset preset;
+
+	private int dayLength;
     private int dayStart;
     private int nightStart;
 	public int day = 1;
@@ -21,10 +23,21 @@ public class Weather : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        dayLength = 1440;
-        dayStart = 360;
-        nightStart = 540;
-        currentTime = 360;
+		//If there is a preset defined use its values
+		if (preset != null) 
+		{
+			dayLength = preset.dayLength * 60;
+			dayStart = preset.dayStart * 60;
+			nightStart = preset.nightStart * 60;
+			currentTime = 360;
+		} 
+		else 
+		{
+			dayLength = 1440;
+			dayStart = 360;
+			nightStart = 540;
+			currentTime = 360;	
+		}
     }
 
     // Update is called once per frame
