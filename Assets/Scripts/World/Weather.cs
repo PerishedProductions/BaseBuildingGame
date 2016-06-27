@@ -5,9 +5,13 @@ using System;
 
 public class Weather : MonoBehaviour {
 
-    private int dayLength;
+	//All of them variables
+	public WeatherPreset preset;
+
+	private int dayLength;
     private int dayStart;
     private int nightStart;
+	public int day = 1;
     public int hours;
     public int minutes;
 
@@ -19,10 +23,21 @@ public class Weather : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        dayLength = 1440;
-        dayStart = 360;
-        nightStart = 540;
-        currentTime = 360;
+		//If there is a preset defined use its values
+		if (preset != null) 
+		{
+			dayLength = preset.dayLength * 60;
+			dayStart = preset.dayStart * 60;
+			nightStart = preset.nightStart * 60;
+			currentTime = 360;
+		} 
+		else 
+		{
+			dayLength = 1440;
+			dayStart = 360;
+			nightStart = 540;
+			currentTime = 360;	
+		}
     }
 
     // Update is called once per frame
@@ -57,6 +72,12 @@ public class Weather : MonoBehaviour {
             sun.intensity = 1;
         }
 
+		//Add one day whenever the time is at 0
+		if (currentTime == 0) {
+			day++;
+		}
+
+		//Converts the time into hours and minutes
         hours = Mathf.FloorToInt(currentTime / 60);
         minutes = (int)currentTime % 60;
     }
