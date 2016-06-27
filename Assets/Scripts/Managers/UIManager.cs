@@ -19,6 +19,23 @@ public class UIManager : MonoBehaviour {
 
     public Weather weather;
 
+	public void Paused()
+	{
+		Time.timeScale = 0;
+	}
+	public void Play()
+	{
+		Time.timeScale = 1;
+	}
+	public void PlayTimesTwo()
+	{
+		Time.timeScale = 2;
+	}
+	public void PlayTimesFour()
+	{
+		Time.timeScale = 4;
+	}
+
     public void Booldoze()
     {
         mouseManager.StartBuild(Tile.TileType.Empty);
