@@ -19,7 +19,7 @@ public class Weather : MonoBehaviour {
     private float cycleSpeed;
     public bool isDay;
     public Light sun;
-    public GameObject earth;
+    public ParticleSystem Rain;
 
     // Use this for initialization
     void Start () {
@@ -80,5 +80,10 @@ public class Weather : MonoBehaviour {
 		//Converts the time into hours and minutes
         hours = Mathf.FloorToInt(currentTime / 60);
         minutes = (int)currentTime % 60;
+
+        if(UnityEngine.Random.Range(0, 100) <= 100)
+        {
+            Rain.Play();
+        }
     }
 }
