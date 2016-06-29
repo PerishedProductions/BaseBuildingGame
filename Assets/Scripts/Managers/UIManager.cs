@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour {
 	}
 	public void PlayTimesFour()
 	{
-		Time.timeScale = 4;
+		Time.timeScale = 100;
 	}
 
     public void Booldoze()

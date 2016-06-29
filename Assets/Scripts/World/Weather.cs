@@ -44,7 +44,7 @@ public class Weather : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         currentTime += 0.1f * Time.deltaTime * 5;
 

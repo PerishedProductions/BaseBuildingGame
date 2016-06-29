@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 public class MouseManager : MonoBehaviour {
 
+	//TODO: comment all of this shit
+
     public GameObject cursorSelectorPrefab;
     public World worldController;
     public Text infoText;
@@ -154,7 +156,7 @@ public class MouseManager : MonoBehaviour {
         Tile tileUnderMouse = GetTileAtWorlCoord(currFramePosition);
         if (tileUnderMouse != null)
         {
-            infoText.text = "Tile: " + tileUnderMouse.type + ", More info here";
+			infoText.text = "Tile: " + tileUnderMouse.type + ", Tile Feature: " + tileUnderMouse.feature + ", Buildable: " + tileUnderMouse.buildable;
         }
     }
 
