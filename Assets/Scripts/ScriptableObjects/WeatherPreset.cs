@@ -7,6 +7,7 @@ public class WeatherPreset : ScriptableObject {
 	public string planetType;
 
 	public int dayLength = 24;
-	public int dayStart = 6;
-	public int nightStart = 9;
+	public int dayStart = 4;
+	public int nightStart = 22;
+    public int gameStartTime = 4;
 }

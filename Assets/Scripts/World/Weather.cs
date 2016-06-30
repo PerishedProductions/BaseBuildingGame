@@ -32,14 +32,14 @@ public class Weather : MonoBehaviour
             dayLength = preset.dayLength * 60;
             dayStart = preset.dayStart * 60;
             nightStart = preset.nightStart * 60;
-            currentTime = 360;
+            currentTime = preset.gameStartTime * 60;
         }
         else
         {
             dayLength = 1440;
-            dayStart = 360;
-            nightStart = 540;
-            currentTime = 360;
+            dayStart = 240;
+            nightStart = 1320;
+            currentTime = 240;
         }
     }
 
@@ -88,9 +88,9 @@ public class Weather : MonoBehaviour
             {
                 sun.intensity += 0.002f;
             }
-            if (sun.intensity > 0.5f)
+            if (sun.intensity > 0.2f)
             {
-                sun.intensity = 0.5f;
+                sun.intensity = 0.2f;
             }
         }
 
