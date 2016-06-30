@@ -19,6 +19,11 @@ public class UIManager : MonoBehaviour {
 
     public Weather weather;
 
+	public void ToggleSubMenu(GameObject subMenu)
+	{
+		subMenu.SetActive(!subMenu.gameObject.activeInHierarchy);
+	}
+
 	public void Paused()
 	{
 		Time.timeScale = 0;
