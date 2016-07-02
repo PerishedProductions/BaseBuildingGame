@@ -14,8 +14,8 @@ public class WorldGenEditor : Editor
 
         if (GUILayout.Button("Generate new map"))
         {
-            world.worldZoom = Random.Range(1.9f, 99.9f);
-            world.GenerateMap();
+            world.worldSeed = Random.Range(1, 999999);
+            world.RegenerateMap();
         }
     }
 	
