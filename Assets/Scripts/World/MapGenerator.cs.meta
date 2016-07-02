@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: 1b9c74499e0dffb4fa580555a3812fbb
-timeCreated: 1467469195
+timeCreated: 1467474447
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - emptyTilePrefab: {fileID: 1000010278666022, guid: 94816bc787c054d4981705f964cc1d25,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
