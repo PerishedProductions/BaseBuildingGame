@@ -11,17 +11,16 @@ public class World : MonoBehaviour {
     public int worldSeed;
 
     private Tile[,] map;
-    public MapGenerator mapGenerator;
 
     void Start()
     {
-        mapGenerator.InitializeMap(worldWidth, worldHeight, worldZoom);
-        map = mapGenerator.GenerateMap(worldSeed);
+		MapGenerator.Instance.InitializeMap(worldWidth, worldHeight, worldZoom);
+		map = MapGenerator.Instance.GenerateMap(worldSeed);
     }
 
    public void RegenerateMap()
     {
-        map = mapGenerator.GenerateMap(worldSeed);
+		map = MapGenerator.Instance.GenerateMap(worldSeed);
     }
 
 

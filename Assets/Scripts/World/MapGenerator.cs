@@ -2,7 +2,23 @@
 using System.Collections;
 
 public class MapGenerator : MonoBehaviour {
-    private int offset = 1;
+    
+	public static MapGenerator _instance;
+
+	public static MapGenerator Instance 
+	{
+		get
+		{
+			if (_instance == null) 
+			{
+				GameObject go = new GameObject ("MapGenerator");
+				go.AddComponent<MapGenerator> ();
+			}
+			return _instance;
+		}
+	}
+
+	private int offset = 1;
 
     private int worldSeed;
     private float worldZoom;
@@ -11,6 +27,12 @@ public class MapGenerator : MonoBehaviour {
     private Tile[,] map;
     private int worldWidth;
     private int worldHeight;
+
+	void Awake()
+	{
+		_instance = this;
+		DontDestroyOnLoad (this);
+	}
 
     public void InitializeMap( int Width, int Height, float Zoom)
     {
