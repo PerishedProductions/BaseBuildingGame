@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MapGenerator : MonoBehaviour {
     
-	public static MapGenerator _instance;
+	private static MapGenerator _instance;
 
 	public static MapGenerator Instance 
 	{
@@ -19,10 +19,11 @@ public class MapGenerator : MonoBehaviour {
 	}
 
 	private int offset = 1;
-
+     
     private int worldSeed;
     private float worldZoom;
     public GameObject emptyTilePrefab;
+    public PlanetPreset planet;
 
     private Tile[,] map;
     private int worldWidth;
@@ -30,12 +31,28 @@ public class MapGenerator : MonoBehaviour {
 
 	void Awake()
 	{
-		_instance = this;
+        if (planet == null)
+        {
+            planet = PlanetPreset.CreateInstance<PlanetPreset>();
+            planet.planetTileInfo = new PlanetPreset.Tiles[1];
+            planet.planetTileInfo[0].tile = Tile.TileType.Grass;
+            planet.planetTileInfo[0].layercount = 100;
+            planet.planetTileInfo[0].buildable = false;
+            planet.planetTileInfo[0].traversable = false;
+
+            planet.planetResourceInfo = new PlanetPreset.Resources[1];
+            planet.planetResourceInfo[0].resource = Tile.TileFeature.None;
+            planet.planetResourceInfo[0].layercount = 100;
+        }
+
+        _instance = this;
 		DontDestroyOnLoad (this);
-	}
+
+    }
 
     public void InitializeMap( int Width, int Height, float Zoom)
     {
+
         map = new Tile[Width, Height];
 
         for( int x = 0; x < Width; x++)
@@ -66,42 +83,29 @@ public class MapGenerator : MonoBehaviour {
                     tile.transform.parent = this.transform;
                     tile.name = tile.transform.position.x + ", " + tile.transform.position.y;
 
-                    tile.GetComponent<Tile>().x = (int)tile.transform.position.x;
-                    tile.GetComponent<Tile>().y = (int)tile.transform.position.y;
+                    tile.x = (int)tile.transform.position.x;
+                    tile.y = (int)tile.transform.position.y;
 
 
                     Vector2 position = worldZoom * (new Vector2(x, y));
                     float noise = Mathf.PerlinNoise(position.x + worldSeed, position.y + worldSeed);
+                    noise *= 100;
 
-                    if (0.2 > noise)
+                    while ( noise > 0.0f )
                     {
-                        tile.GetComponent<Tile>().type = Tile.TileType.Water;
-                        tile.GetComponent<Tile>().buildable = false;
+                        for( int index = 0; index < planet.planetTileInfo.Length; index++)
+                        {
+                            noise -= planet.planetTileInfo[index].layercount;
+                            if( noise <= 0.0f)
+                            {
+                                tile.type = planet.planetTileInfo[index].tile;
+                                tile.buildable = planet.planetTileInfo[index].buildable;
+                                tile.traversable = planet.planetTileInfo[index].traversable;
+                                break;
+                            }
+                        }
                     }
 
-                    if (noise >= 0.2 && 0.3 > noise)
-                    {
-                        tile.GetComponent<Tile>().type = Tile.TileType.Sand;
-                        tile.GetComponent<Tile>().buildable = true;
-                    }
-
-                    if (noise >= 0.3 && 0.5 > noise)
-                    {
-                        tile.GetComponent<Tile>().type = Tile.TileType.Grass;
-                        tile.GetComponent<Tile>().buildable = true;
-                    }
-
-                    if (noise >= 0.5 && 0.7 > noise)
-                    {
-                        tile.GetComponent<Tile>().type = Tile.TileType.Dirt;
-                        tile.GetComponent<Tile>().buildable = true;
-                    }
-
-                    if (noise >= 0.7)
-                    {
-                        tile.GetComponent<Tile>().type = Tile.TileType.Mountain;
-                        tile.GetComponent<Tile>().buildable = false;
-                    }
                     GenerateFeatures(tile, position.x + worldSeed, position.y + worldSeed);
                 }
             }
@@ -114,34 +118,20 @@ public class MapGenerator : MonoBehaviour {
     {
         float noise = Mathf.PerlinNoise(X_Position, Y_Position);
 
-        if (0.15 > noise)
-        {
-            tile.GetComponent<Tile>().feature = Tile.TileFeature.Oil;
-        }
+        noise *= 100;
 
-        if (noise >= 0.15 && 0.40 > noise)
+        while (noise > 0.0f)
         {
-            tile.GetComponent<Tile>().feature = Tile.TileFeature.None;
-        }
-
-        if (noise >= 0.4 && 0.6 > noise)
-        {
-            tile.GetComponent<Tile>().feature = Tile.TileFeature.Wood;
-        }
-
-        if (noise >= 0.6 && 0.7 > noise)
-        {
-            tile.GetComponent<Tile>().feature = Tile.TileFeature.Crystal;
-        }
-
-        if (noise >= 0.7 && 0.8 > noise)
-        {
-            tile.GetComponent<Tile>().feature = Tile.TileFeature.Gas;
-        }
-
-        if (noise >= 0.9)
-        {
-            tile.GetComponent<Tile>().feature = Tile.TileFeature.Ore;
+            for (int index = 0; index < planet.planetResourceInfo.Length; index++)
+            {
+                noise -= planet.planetResourceInfo[index].layercount;
+                if (noise <= 0.0f)
+                {
+                    tile.feature = planet.planetResourceInfo[index].resource;
+                    tile.buildable = false;
+                    break;
+                }
+            }
         }
     }
 }

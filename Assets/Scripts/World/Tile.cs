@@ -9,6 +9,7 @@ public class Tile : MonoBehaviour {
     public TileType type = TileType.Empty;
     public TileFeature feature = TileFeature.None;
     public bool buildable;
+    public bool traversable;
 
     public Sprite empty;
     public Sprite sand;
