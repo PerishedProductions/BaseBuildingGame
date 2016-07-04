@@ -128,7 +128,6 @@ public class MapGenerator : MonoBehaviour {
                 if (noise <= 0.0f)
                 {
                     tile.feature = planet.planetResourceInfo[index].resource;
-                    //tile.buildable = false;
                     break;
                 }
             }
