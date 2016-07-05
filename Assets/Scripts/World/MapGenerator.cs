@@ -80,7 +80,7 @@ public class MapGenerator : MonoBehaviour {
                 for (int y = 0; y < worldHeight; y++)
                 {
                     Tile tile = map[x, y];
-                    tile.transform.parent = this.transform;
+                    tile.transform.parent = GameObject.Find("World").transform.FindChild("BottomLayer");
                     tile.name = tile.transform.position.x + ", " + tile.transform.position.y;
 
                     tile.x = (int)tile.transform.position.x;
