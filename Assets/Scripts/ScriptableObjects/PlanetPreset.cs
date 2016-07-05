@@ -18,7 +18,7 @@ public class PlanetPreset : ScriptableObject {
     [Serializable]
     public struct Resources
     {
-        public Tile.TileFeature resource;
+        public Tile.TileResource resource;
         public float layercount;
     }
 

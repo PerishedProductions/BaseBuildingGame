@@ -56,6 +56,11 @@ public class UIManager : MonoBehaviour {
         mouseManager.StartBuild(Tile.TileType.Wall);
     }
 
+    public void BuildRoom()
+    {
+        mouseManager.StartRoom("SleepingQuarters");
+    }
+
     public void ToggleOnBuildMode()
     {
         buildTools.SetActive(!buildModeOn);

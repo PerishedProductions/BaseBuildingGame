@@ -41,7 +41,7 @@ public class MapGenerator : MonoBehaviour {
             planet.planetTileInfo[0].traversable = false;
 
             planet.planetResourceInfo = new PlanetPreset.Resources[1];
-            planet.planetResourceInfo[0].resource = Tile.TileFeature.None;
+            planet.planetResourceInfo[0].resource = Tile.TileResource.None;
             planet.planetResourceInfo[0].layercount = 100;
         }
 
@@ -127,7 +127,7 @@ public class MapGenerator : MonoBehaviour {
                 noise -= planet.planetResourceInfo[index].layercount;
                 if (noise <= 0.0f)
                 {
-                    tile.feature = planet.planetResourceInfo[index].resource;
+                    tile.resources = planet.planetResourceInfo[index].resource;
                     break;
                 }
             }

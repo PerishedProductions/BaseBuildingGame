@@ -5,9 +5,10 @@ using System.Collections;
 public class Tile : MonoBehaviour {
 
     public enum TileType { Empty, Sand, Water, Grass, Dirt, Mountain, Floor, Wall }
-    public enum TileFeature { None, Pavement, Gas, Oil, Crystal, Ore, Wood }
+    public enum TileResource { None, Pavement, Gas, Oil, Crystal, Ore, Wood }
     public TileType type = TileType.Empty;
-    public TileFeature feature = TileFeature.None;
+    public TileResource resources = TileResource.None;
+    public Room room = null;
     public bool buildable;
     public bool traversable;
 

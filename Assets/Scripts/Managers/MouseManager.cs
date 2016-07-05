@@ -19,6 +19,7 @@ public class MouseManager : MonoBehaviour {
     List<GameObject> dragPreviewObjects = new List<GameObject>();
 
     public Tile.TileType buildingType;
+    public Room room;
     public bool isBuilding = false;
 
     void Update()
@@ -137,6 +138,10 @@ public class MouseManager : MonoBehaviour {
                         {
                             case Tile.TileType.Empty:
                                 t.type = Tile.TileType.Empty;
+                                if (t.room != null)
+                                {
+                                    t.room.DestroyRoom(t);
+                                }
                                 break;
                             case Tile.TileType.Floor:
                                 t.type = Tile.TileType.Floor;
@@ -144,6 +149,12 @@ public class MouseManager : MonoBehaviour {
                             case Tile.TileType.Wall:
                                 t.type = Tile.TileType.Wall;
                                 break;
+                        }
+
+                        if( room != null)
+                        {
+                            t.room = room;
+                            room.AddTile(t);
                         }
                     }
                 }
@@ -156,14 +167,31 @@ public class MouseManager : MonoBehaviour {
         Tile tileUnderMouse = GetTileAtWorlCoord(currFramePosition);
         if (tileUnderMouse != null)
         {
-			infoText.text = "Tile: " + tileUnderMouse.type + ", Tile Feature: " + tileUnderMouse.feature + ", Buildable: " + tileUnderMouse.buildable;
+			infoText.text = "Tile: " + tileUnderMouse.type + ", Tile Feature: " + tileUnderMouse.resources + ", Buildable: " + tileUnderMouse.buildable;
+            if( tileUnderMouse.room != null)
+            {
+                infoText.text += " Room:" + tileUnderMouse.room.Name;
+            }
         }
     }
 
     public void StartBuild(Tile.TileType type)
     {
         isBuilding = true;
+        room = null;
         buildingType = type;
+    }
+
+    public void StartRoom(string type)
+    {
+        isBuilding = true;
+        RoomPreset tempRoom = Resources.Load("RoomPresets\\" + type) as RoomPreset;
+        room = new Room();
+        room.BuildInside = tempRoom.BuildInside;
+        room.BuildOutside = tempRoom.BuildOutside;
+        room.Description = tempRoom.Description;
+        room.Name = tempRoom.Name;
+        room.Requirements = tempRoom.Requirements;
     }
 
     Tile GetTileAtWorlCoord(Vector3 coord)
