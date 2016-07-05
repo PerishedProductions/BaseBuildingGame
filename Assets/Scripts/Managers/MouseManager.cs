@@ -9,6 +9,7 @@ public class MouseManager : MonoBehaviour {
 	//TODO: comment all of this shit
 
     public GameObject cursorSelectorPrefab;
+    public GameObject emptyTilePrefab;
     public World worldController;
     public Text infoText;
 
@@ -133,22 +134,30 @@ public class MouseManager : MonoBehaviour {
                     Tile t = worldController.GetTileAt(x, y);
                     if (t != null && t.buildable)
                     {
-                        //Build the tile that is selected
-                        switch (buildingType)
+                        if (buildingType != Tile.TileType.Empty)
                         {
-                            case Tile.TileType.Empty:
-                                t.type = Tile.TileType.Empty;
-                                if (t.room != null)
-                                {
-                                    t.room.DestroyRoom(t);
-                                }
-                                break;
-                            case Tile.TileType.Floor:
-                                t.type = Tile.TileType.Floor;
-                                break;
-                            case Tile.TileType.Wall:
-                                t.type = Tile.TileType.Wall;
-                                break;
+                            //Build the tile that is selected
+                            GameObject tile = SimplePool.Spawn(emptyTilePrefab, t.transform.position, Quaternion.identity);
+                            tile.transform.parent = GameObject.Find("World").transform.FindChild("MiddleLayer");
+                            tile.name = tile.transform.position.x + ", " + tile.transform.position.y;
+
+                            switch (buildingType)
+                            {
+                                case Tile.TileType.Floor:
+                                    tile.GetComponent<Tile>().type = Tile.TileType.Floor;
+                                    break;
+                                case Tile.TileType.Wall:
+                                    tile.GetComponent<Tile>().type = Tile.TileType.Wall;
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            if( t.room != null && room == null)
+                            {
+                                t.room.DestroyRoom(t);
+                            }
+
                         }
 
                         if( room != null)
